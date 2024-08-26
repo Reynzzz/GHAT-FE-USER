@@ -1,0 +1,16 @@
+export const READ_TEACHER = 'read/teacher'
+export const ADD_TEACHER = 'add/teacher'
+export const DELETE_TEACHER = 'delete/teacher'
+export const UPDATE_TEACHER = 'update/teacher'
+export const READ_SCHEDULE = "read/schedule"
+export const POST_SCHEDULE = "post/schedule"
+export const READ_KELAS = 'read/kelas'
+export const POST_KELAS = 'add/kelas'
+export const UPDATE_SCHEDULE = 'update/schedule'
+export const DELETE_SCHEDULE ='delete/schedule'
+export const LOGIN = 'login'
+export const READ_SCHEDULE_BY_USER = 'read/schedule/by/user'
+export const READ_SCHEDULE_NO_USER = 'read/schedule/no/user'
+export const VALIDATE_GURU_JAGA = 'put/validasi/guruJaga'
+export const DELETE_KELAS = 'delete/kelas'
+export const UPDATE_KELAS = 'update/kelas'
