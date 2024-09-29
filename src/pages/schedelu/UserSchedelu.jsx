@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchScheduleByUser } from "../../store/actionCreator";
 import { FaCheck, FaTimes, FaCalendarCheck } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
+import AddScheduleGuru from "./AddScheduleGuru";
 
 const isLate = (jadwal, absen) => {
   if (!jadwal || !absen) return false;
@@ -115,10 +116,13 @@ export default function UserSchedelu() {
   return (
     <div>
       <div className="relative overflow-x-auto px-5">
-        <div className="pb-2 pt-5 sm:pt-0 text-justify">
+        <div className="pb-2 pt-5 sm:pt-0 text-justify gap-10=v flex justify-between items-center">
           <h1 className="text-sm font-semibold text-yellow-300">
             Note : Absen Hanya bisa dilakukan Ketika Sudah Jam pelajaran dimulai dan setelah 18 menit jam masuk belum absen di hitung terlambat !
           </h1>
+          <button onClick={() => navigate('/absen')} className="btn btn-primary">
+            Absen
+          </button>
         </div>
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -130,7 +134,7 @@ export default function UserSchedelu() {
               <th scope="col" className="px-2 py-2 text-center">Tanggal Absen</th>
               <th scope="col" className="px-2 py-2 text-center">Status Kehadiran</th>
               <th scope="col" className="px-2 py-2 text-center">jam</th>
-              <th scope="col" className="px-2 py-2 text-center">Action</th>
+              {/* <th scope="col" className="px-2 py-2 text-center">Action</th> */}
             </tr>
           </thead>
           <tbody>
@@ -160,7 +164,7 @@ export default function UserSchedelu() {
                   <td className="px-6 py-4">
                     <RealTimeClock />
                   </td>
-                  <td className="p-2 py-4">
+                  {/* <td className="p-2 py-4">
                     <div className="flex flex-col space-y-2">
                       <button
                         onClick={() => !isButtonDisabled && navigate(`/absen/${el.id}`)}
@@ -171,7 +175,7 @@ export default function UserSchedelu() {
                       </button>
                       <div className="w-full"></div>
                     </div>
-                  </td>
+                  </td> */}
                 </tr>
               );
             })}

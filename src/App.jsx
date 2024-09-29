@@ -87,7 +87,7 @@ function App() {
                     <Route path="/schedelu" element={<UserSchedelu />} />
                     <Route path="/teacher" element={<UserTeacher />} />
                     <Route path="/settings" element={<UserSettings />} />
-                    <Route path="/absen/:id" element={<UserAbsenSchedule />} />
+                    <Route path="/absen" element={<UserAbsenSchedule />} />
                   </>
                 ) : (
                   <></>
