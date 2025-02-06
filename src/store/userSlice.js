@@ -6,9 +6,15 @@ const SECRET_KEY = 'secret-key';
 
 // Function to decrypt values
 const decrypt = (cipherText) => {
-  if (!cipherText) return '';
-  const bytes = CryptoJS.AES.decrypt(cipherText, SECRET_KEY);
-  return bytes.toString(CryptoJS.enc.Utf8);
+  try {
+    if (!cipherText) return '';
+    const bytes = CryptoJS.AES.decrypt(cipherText, SECRET_KEY);
+    const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
+    return decryptedText || '';
+  } catch (error) {
+    console.error("Decryption error:", error);
+    return ''; // Return empty if decryption fails
+  }
 };
 
 // Decrypt the values from localStorage

@@ -18,6 +18,8 @@ const UserAbsenSchedule = () => {
   const [kelasId,setKelasId] = useState('')
   const [jadwalKelas,setJadwalKelas] = useState('')
   const navigate = useNavigate();
+  const BASE_URL_LOCAL ='http://localhost:4000/'
+  const BASE_URL_PRODUCTION = 'https://api-v1.ghatmtsn1.com/' 
   const videoConstraints = {
     facingMode: isFrontCamera ? 'user' : 'environment',
     width: 500,
@@ -62,7 +64,7 @@ const UserAbsenSchedule = () => {
       formData.append('kelasId', kelasId); // Ensure this field is sent
       formData.append('jadwalKelas', jadwalKelas); // Ensure this field is sent
   
-      const response = await axios.post(`https://api-v1.ghatmtsn1.com/absen`, formData, {
+      const response = await axios.post(BASE_URL_LOCAL +'absen', formData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
         },
@@ -90,11 +92,11 @@ const UserAbsenSchedule = () => {
   
 
   return (
-    <div className="flex flex-col items-center justify-center pt-10 p-6">
-      <h1 className="text-2xl font-bold mb-4">Attendance Page</h1>
+    <div className="flex flex-col items-center justify-center pt-10 p-6 text-black dark:text-white">
+      <h1 className="text-2xl font-bold mb-4">Silahkan Absen</h1>
       {!isCameraActive ? (
         <button
-          className="flex flex-col items-center justify-center bg-blue-500 text-white px-8 py-6 rounded-lg hover:bg-blue-600 shadow-lg transition-transform transform hover:scale-105"
+          className="flex flex-col items-center justify-center bg-blue-500  px-8 py-6 rounded-lg hover:bg-blue-600 shadow-lg transition-transform transform hover:scale-105"
           onClick={() => setIsCameraActive(true)}
         >
           <FaCamera className="w-12 h-12 mb-2" />
@@ -111,21 +113,21 @@ const UserAbsenSchedule = () => {
           />
           <div className="flex space-x-4 mb-4">
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+              className="bg-green-500  px-4 py-2 rounded-md hover:bg-green-600"
               type="button"
               onClick={capture}
             >
               Capture Photo
             </button>
             <button
-              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+              className="bg-red-500  px-4 py-2 rounded-md hover:bg-red-600"
               type="button"
               onClick={closeCamera}
             >
               Close Camera
             </button>
             <button
-              className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600"
+              className="bg-gray-500  px-4 py-2 rounded-md hover:bg-gray-600"
               type="button"
               onClick={() => setIsFrontCamera(!isFrontCamera)}
             >
@@ -133,7 +135,7 @@ const UserAbsenSchedule = () => {
             </button>
           </div>
           <div className="mb-4 w-full max-w-md">
-  <label htmlFor="kelasId" className="block text-sm font-medium text-white mb-1">
+  <label htmlFor="kelasId" className="block text-sm font-medium  mb-1">
     Kelas
   </label>
   <select
@@ -152,7 +154,7 @@ const UserAbsenSchedule = () => {
 </div>
 
           <div className="mb-4 w-full max-w-md">
-            <label htmlFor="jadwalKelas" className="block text-sm font-medium text-white mb-1">Jadwal Kelas</label>
+            <label htmlFor="jadwalKelas" className="block text-sm font-medium  mb-1">Jadwal Kelas</label>
             <input
             type='datetime-local'
             id='jadwalKelas'
@@ -164,8 +166,7 @@ const UserAbsenSchedule = () => {
           </div>
           <div className="mb-4 w-full max-w-md ">
             <div className='flex gap-2 mb-1'>
-            <label htmlFor="keterangan" className="block text-sm font-medium text-white">Keterangan</label>
-            <p className='text-white text-sm'>Bersifat Opsional : </p>
+            <label htmlFor="keterangan" className="block text-sm font-medium ">Tujuan Pembelajaran</label>
             </div>
             <textarea
               id="keterangan"
@@ -177,7 +178,7 @@ const UserAbsenSchedule = () => {
             />
           </div>
           <div className="mb-4 w-full max-w-md">
-            <label htmlFor="materiAjar" className="block text-sm font-medium text-white mb-1">Materi Ajar</label>
+            <label htmlFor="materiAjar" className="block text-sm font-medium  mb-1">Materi Ajar</label>
             <textarea
               id="materiAjar"
               value={materiAjar}
@@ -194,14 +195,14 @@ const UserAbsenSchedule = () => {
               <img src={foto_absen} alt="Captured" className={imageClass} />
               <div className='flex gap-5'>
               <button
-                className="bg-yellow-500 text-white px-4 py-2 mt-4 rounded-md hover:bg-yellow-600"
+                className="bg-yellow-500  px-4 py-2 mt-4 rounded-md hover:bg-yellow-600"
                 type="button"
                 onClick={deleteImage}
               >
                 Delete Photo
               </button>
               <button
-                className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-md hover:bg-blue-600"
+                className="bg-blue-500  px-4 py-2 mt-4 rounded-md hover:bg-blue-600"
                 type="submit"
               >
                 Submit Photo

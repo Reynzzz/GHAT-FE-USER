@@ -25,7 +25,8 @@ const UserDashboard = () => {
     <div className="min-h-screen  p-8">
       <div className="max-w-7xl mx-auto text-white">
         <div className="bg-sky-700 shadow-lg rounded-lg p-6">
-          <h1 className="text-2xl font-bold mb-4">{greeting}, {userType.dataUser.username}</h1>
+          <h1 className="text-2xl font-bold mb-2">ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ,Assalamualaikum warahmatullahi wabarakatuh</h1>
+          <h2 className="text-3xl font-semibold mb-2">{userType.dataUser.username}</h2>
           <p className="">Welcome to your dashboard.</p>
         </div>
         {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">

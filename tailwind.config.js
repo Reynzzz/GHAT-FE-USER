@@ -6,6 +6,9 @@ export default {
   darkMode: false, // Disable dark mode
   theme: {
     extend: {
+      animation: {
+        'spin-slow': 'spin 3s linear infinite', // Animasi lebih lambat
+      },
       backgroundImage: {
         "back-mobile": "url('./src/assets/images/Back_mobile.svg')",
         "bg-log": "url('./src/assets/images/bg_log.jpg')",

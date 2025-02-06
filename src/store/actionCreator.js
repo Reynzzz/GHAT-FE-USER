@@ -1,5 +1,6 @@
 import {
   ADD_TEACHER,
+  DELETE_ALL_SCHEDULE,
   DELETE_KELAS,
   DELETE_SCHEDULE,
   DELETE_TEACHER,
@@ -201,6 +202,35 @@ export const deleteSchedule = (id) => {
         toast.success("Schedule deleted successfully!");
         dispatch(fetchAbsen());
         dispatch(actionGenerator(DELETE_SCHEDULE));
+      } else {
+        // Tangani respons yang tidak OK (misalnya, status 4xx atau 5xx)
+        const errorData = await response.json();
+        toast.error(`Error: ${errorData.message}`);
+        throw new Error(`Failed to delete schedule: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+};
+export const deleteScheduleAll = () => {
+  // console.log(id,'id');
+  return async (dispatch) => {
+    try {
+      const token = localStorage.getItem("access_token"); 
+      const response = await fetch(BASE_URL + `/scheduleAll`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`,
+          
+        },
+      });
+      if (response.ok) {
+        // Tampilkan toast sukses jika responsenya OK
+        dispatch(fetchAbsen());
+        dispatch(actionGenerator(DELETE_ALL_SCHEDULE));
       } else {
         // Tangani respons yang tidak OK (misalnya, status 4xx atau 5xx)
         const errorData = await response.json();
