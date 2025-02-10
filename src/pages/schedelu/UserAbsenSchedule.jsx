@@ -64,7 +64,7 @@ const UserAbsenSchedule = () => {
       formData.append('kelasId', kelasId); // Ensure this field is sent
       formData.append('jadwalKelas', jadwalKelas); // Ensure this field is sent
   
-      const response = await axios.post(BASE_URL_LOCAL +'absen', formData, {
+      const response = await axios.post(BASE_URL_PRODUCTION +'absen', formData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
         },
